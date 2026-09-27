@@ -1,4 +1,8 @@
-name: build
+      - name: Build
+        run: |
+          ls -la
+          cat buildozer.spec || echo "NO SPEC FOUND!"
+          buildozer android debug
 on: [push]
 jobs:
   build:
