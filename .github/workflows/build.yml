@@ -10,7 +10,7 @@ jobs:
       - name: Build
         run: |
           ls -la
-          buildozer android debug
+          buildozer --allow-root android debug
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
