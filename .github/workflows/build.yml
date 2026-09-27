@@ -5,15 +5,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y openjdk-17-jdk zip unzip libssl-dev libffi-dev libltdl-dev
-          pip install --upgrade pip
-          pip install buildozer cython==0.29.36
+          sudo apt install -y python3-pip zip unzip openjdk-17-jdk
+          pip install buildozer cython
       - name: Build APK
         run: buildozer -v android debug
       - name: Upload APK
@@ -21,4 +17,3 @@ jobs:
         with:
           name: apk
           path: bin/*.apk
-      
